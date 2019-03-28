@@ -39,18 +39,20 @@ jobs:
             go vet ./...
             go test -v ./...
 workflows:
-  version: 2.0
-  testinf-flow:
+  version: 2
+  testing-flow:
     jobs:
       - setup-project-env:
           filters:
             branches:
               only: master
       - build&test:
-          require: setup-project-env
+          requires:
+            - setup-project-env
           filters:
             branches:
-              only:master
+              only:
+                - master
 
 
 

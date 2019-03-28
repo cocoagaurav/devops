@@ -2,7 +2,7 @@ version: 2
 jobs:
   setup-project-env:
     docker:
-      - image: circleci/golang:1.8
+      - image: circleci/golang:latest
       - image: circleci/mysql:latest
         environment:
           MYSQL_DATABASE: devop

@@ -21,11 +21,6 @@ jobs:
     working_directory: /go/src/github.com/cocoagaurav/devops
     steps:
       - checkout
-
-  build&test:
-    working_directory: /go/src/github.com/cocoagaurav/devops
-    steps:
-      - checkout
       - run: go get -u github.com/golang/dep/cmd/dep
       - run:
           name: building
@@ -42,6 +37,7 @@ jobs:
           command: |
             go vet ./...
             go test -v ./...
+
 workflows:
   version: 2
   testing-flow:
@@ -50,13 +46,6 @@ workflows:
           filters:
             branches:
               only: master
-      - build&test:
-          requires:
-            - setup-project-env
-          filters:
-            branches:
-              only:
-                - master
 
 
 

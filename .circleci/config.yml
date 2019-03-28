@@ -27,7 +27,7 @@ jobs:
           name: building
           command: |
             dep ensure
-            go build -o s1 /cmd/s1 && go build -o s2 /cmd/s2
+            go build -o s1 ./cmd/s1 && go build -o s2 ./cmd/s2
       - run:
           name: service-start
           command: |

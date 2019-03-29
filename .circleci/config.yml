@@ -24,14 +24,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: dep ensure & building
+          name: dep ensure
           command: |
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
-            go build -o s1 ./cmd/s1 && go build -o s2 ./cmd/s2
       - run:
-          name: service-start
+          name: service build and start
           command: |
+            go build -o s1 ./cmd/s1 && go build -o s2 ./cmd/s2
             ./s1 -logtostderr &
             ./s2 -logtostderr &
       - run:

@@ -27,7 +27,7 @@ jobs:
           name: dep ensure
           command: |
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | bash
-            dep ensure
+            dep ensure -v
       - run:
           name: service build and start
           command: |
@@ -37,7 +37,7 @@ jobs:
       - run:
           name: test run
           command: |
-            go vet ./...
+            go vet -v ./...
             go test -v ./...
 
 workflows:

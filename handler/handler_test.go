@@ -2,6 +2,7 @@ package handler
 
 import (
 	"bytes"
+	"context"
 	"flag"
 	"github.com/cocoagaurav/devops/database"
 	"github.com/cocoagaurav/devops/es"
@@ -41,6 +42,12 @@ func TestLogin(t *testing.T) {
 	if res.Code != 200{
 		t.Fatalf("expected status code 200 got %v", res.Code)
 	}
+	es := es.GetEs()
+	re, _, err := es.Ping("http://localhost:9200").Do(context.Background())
+	if err!= nil{
+		t.Fatalf("es is not working err: %v", err )
+	}
+	t.Logf("es res is :%v", re)
 
 }
 

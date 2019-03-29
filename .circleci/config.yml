@@ -22,10 +22,10 @@ jobs:
     working_directory: /go/src/github.com/cocoagaurav/devops
     steps:
       - checkout
-      - run: go get -u github.com/golang/dep/cmd/dep
       - run:
-          name: building
+          name: dep ensure & building
           command: |
+            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
             go build -o s1 ./cmd/s1 && go build -o s2 ./cmd/s2
       - run:

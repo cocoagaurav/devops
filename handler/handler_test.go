@@ -16,6 +16,7 @@ import (
 func TestMain(m *testing.M){
 	flag.Parse()
 	database.Opendatabase()
+	database.InitDB()
 	kafka.NewKafkaProducer()
 	es.ElacticConn()
 

@@ -40,6 +40,12 @@ jobs:
             go vet -v ./...
             go test -v ./...
 
+  docker-push:
+    machine: true
+    - setup_remote_docker:
+        docker_layer_caching: true
+
+
 workflows:
   version: 2
   testing-flow:
@@ -48,6 +54,3 @@ workflows:
           filters:
             branches:
               only: master
-
-
-

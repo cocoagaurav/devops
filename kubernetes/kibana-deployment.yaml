@@ -1,0 +1,38 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: es-kibana
+  labels:
+    app: elasticsearch
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+        - name: es-kibana
+          image: docker.elastic.co/kibana/kibana-oss:6.4.2
+          env:
+            - name: ELASTICSEARCH_URL
+              value: http://elasticsearch-cluster:9200
+          ports:
+            - containerPort: 5601
+              name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  labels:
+    app: elasticsearch
+spec:
+  selector:
+    app: elasticsearch
+  ports:
+    - name: http
+      port: 80
+      targetPort: 5601
+      protocol: TCP
+  type: NodePort

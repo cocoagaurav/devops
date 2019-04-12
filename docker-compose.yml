@@ -63,7 +63,7 @@ services:
 #  s2:
 #    build:
 #      context: .
-#      dockerfile: DockerS2
+#      dockerfile: Dockerfile
 #    restart: on-failure
 #    ports:
 #      - "8007:8007"

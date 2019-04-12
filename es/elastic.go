@@ -10,7 +10,7 @@ var client *elastic.Client
 
 func ElacticConn(){
 	var err error
-	client, err = elastic.NewSimpleClient(elastic.SetURL("http://localhost:9200"))
+	client, err = elastic.NewSimpleClient(elastic.SetURL("http://elasticsearch-cluster:9200"))
 	if err != nil {
 		glog.Errorf("error connecting ES err:%v", err)
 		time.Sleep(5 * time.Second)
